@@ -95,9 +95,14 @@ const eldest = inventors.sort((a, b) => {
   const nextGuy = b.passed - b.year;
   return lastGuy > nextGuy ? -1 : 1;
 });
-console.table(eldest);
+// console.table(eldest);
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+let category = document.querySelector(".mw-category");
+let links = Array.from(category.querySelectorAll("a"));
+let de = links
+  .map((link) => link.textContent)
+  .filter((name) => name.includes("de"));
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
