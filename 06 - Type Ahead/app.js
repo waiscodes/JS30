@@ -16,12 +16,22 @@ const findMatches = (wordToMatch, cities) => {
 };
 
 const displayMatches = (e) => {
+  if (!e.target.value) return;
   const matchArray = findMatches(e.target.value, cities);
   const html = matchArray
     .map((place) => {
+      const regex = new RegExp(e.target.value, "gi");
+      const cityName = place.city.replace(
+        regex,
+        `<span class="hl">${e.target.value}</span>`
+      );
+      const stateName = place.state.replace(
+        regex,
+        `<span class="hl">${e.target.value}</span>`
+      );
       return `
         <li>
-          <span class="name">${place.city}, ${place.state}</span>
+          <span class="name">${cityName}, ${stateName}</span>
           <span class="population">${place.population}</span>
         </li>
       `;
