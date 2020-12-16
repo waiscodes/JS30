@@ -12,3 +12,30 @@ const comments = [
   { text: "Ramen is my fav food ever", id: 123523 },
   { text: "Nice Nice Nice!", id: 542328 },
 ];
+
+// Some and Every Checks
+// Array.prototype.some() // is at least one person 19 or older?
+const isAdult = people.some((person) => {
+  return new Date().getFullYear() - person.year >= 18;
+});
+
+// Array.prototype.every() // is everyone 19 or older?
+const allAdults = people.every(
+  (person) => new Date().getFullYear() - person.year >= 18
+);
+
+// Array.prototype.find()
+// Find is like filter, but instead returns just the one you are looking for
+// find the comment with the ID of 823423
+const comment = comments.find((comment) => comment.id === 823423);
+
+// Array.prototype.findIndex()
+// Find the comment with this ID
+// delete the comment with the ID of 823423
+const index = comments.findIndex((comment) => comment.id === 823423);
+comments.splice(index, 1);
+
+// const reduxComments = [
+//   ...comments.splice(0, index),
+//   ...comments.splice(index + 1),
+// ];
