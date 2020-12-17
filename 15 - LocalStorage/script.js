@@ -35,8 +35,10 @@ const populateList = (plates = [], platesList) => {
 };
 
 const toggleDone = (e) => {
-  if (!e.target.matches("input")) return; // skip this unless it's an input
+  // This gives a double click event. Pick v
+  if (!e.target.matches("input")) return;
   const el = e.target;
+  // another use case for data set.
   const index = el.dataset.index;
   items[index].done = !items[index].done;
   localStorage.setItem("items", JSON.stringify(items));
